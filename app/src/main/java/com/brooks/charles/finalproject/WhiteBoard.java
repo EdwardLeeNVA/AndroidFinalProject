@@ -1,6 +1,5 @@
 package com.brooks.charles.finalproject;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,32 +12,22 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 
-/**
- * Created by Charles on 12/4/2015.
- */
 public class WhiteBoard extends View {
-    //fields for the dimens
-    private int myHeight;
-    private int myWidth;
-    private static int COUNTER = 0;
-
 
     //private paint objects
-    private Paint drawnPaint, canvasPaint;
+    private Paint drawnPaint;
     private Path path;
     private Bitmap bm;
 
 
     public WhiteBoard(Context context, int width, int height) {
         super(context);
-        this.myHeight = height;
-        this.myWidth = width;
+
 
 
         //set default color to white
@@ -59,8 +48,6 @@ public class WhiteBoard extends View {
 
         //create a bitmap the size of the view
         bm = bm.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Log.w("WhiteBoard", "BITMAP CREATED");
-        Log.w("WhiteBoard", "CANVAS CREATED");
     }
 
     public void onDraw(Canvas canvas) {

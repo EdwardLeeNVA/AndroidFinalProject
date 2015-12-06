@@ -1,18 +1,17 @@
 package com.brooks.charles.finalproject;
 
-
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -48,9 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if( resourceId !=0 ){
             statusBarHeight = res.getDimensionPixelSize(resourceId);
         }
-        Log.w("SIZE", "StatusBarHeight: " + statusBarHeight);
-        Log.w("SIZE", "ActionBarHeight: " + actionBarHeight);
-
 
         //create the whiteboard the size of the window
         Point size = new Point();
@@ -80,13 +76,20 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         switch (id){
             case R.id.action_settings:
-                Log.w("Menu", "Menu SELECTED");
-                Intent settingsIntent = new Intent( this, SettingsPage.class );
-                Log.w("Menu", "INTENT CREATED");
-                startActivity(settingsIntent);
-                Log.w("Menu", "Activity STARTED");
-                return true;
 
+                Intent settingsIntent = new Intent( this, SettingsPage.class );
+
+                startActivity(settingsIntent);
+
+                return true;
+            case R.id.saveDrawing:
+                try{
+                    wb.saveImageToPhone(this);
+                    Toast.makeText(getApplicationContext(), "Image Saved", Toast.LENGTH_LONG).show();
+                    return true;
+                }catch (IOException e){
+
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -100,24 +103,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
      */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        int action = event.getAction();
+
         //check to see if the person is moving their finger on the whiteboard
         float touchX = event.getX();
         float touchY = event.getY();
 
 
         wb.pathOperations(touchX, touchY, event);
-
-        if(action == MotionEvent.ACTION_UP){
-            //just testing
-            try {
-                Log.w("Save", "Image saved");
-                wb.saveImageToPhone(this);
-            }catch (IOException ios){
-
-            }
-        }
-
 
 
         return true;
