@@ -3,7 +3,6 @@ package com.brooks.charles.finalproject;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -43,13 +42,6 @@ public class SettingsPage extends AppCompatActivity {
         // find the text views so that their color can be set
         backPreview = (TextView) findViewById(R.id.backgroundId);
         paintPreview = (TextView) findViewById(R.id.previewId);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
     private class SeekBarListner implements SeekBar.OnSeekBarChangeListener {

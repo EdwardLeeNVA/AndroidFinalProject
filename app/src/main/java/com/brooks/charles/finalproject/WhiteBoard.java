@@ -30,7 +30,7 @@ public class WhiteBoard extends View {
 
 
     //private paint objects
-    private Paint drawnPaint;
+    private Paint drawnPaint, canvasPaint;
     private Path path;
     private Bitmap bm;
 
@@ -50,6 +50,7 @@ public class WhiteBoard extends View {
         drawnPaint.setStyle(Paint.Style.STROKE);
         drawnPaint.setStrokeJoin(Paint.Join.ROUND);
         drawnPaint.setStrokeCap(Paint.Cap.ROUND);
+
 
         //the window we are painting on
 
@@ -97,30 +98,35 @@ public class WhiteBoard extends View {
         // get state of external storage
         String storageState = Environment.getExternalStorageState( );
 
+
         setDrawingCacheEnabled(true);
+        buildDrawingCache();
+        //bitmap of the full screen
+        Bitmap bm1 = getDrawingCache();
 
         File fileToWrite = null;
         if( storageState.equals( Environment.MEDIA_MOUNTED ) ) {
             // get external storage directory
-            File directory
-                    = activity.getExternalFilesDir( Environment.DIRECTORY_PICTURES );
+            File directory = activity.getExternalFilesDir( Environment.DIRECTORY_PICTURES );
+
             // generate a unique file name
             Date dateToday = new Date( );
             long ms = SystemClock.elapsedRealtime( );
             String filename = "/" + dateToday + "_" + ms + ".png";
             Log.w("Directory",directory + filename );
+
             // create a file to write to
             fileToWrite = new File( directory + filename );
 
             //check to see if there is space
             long  freeSpace = directory.getFreeSpace( ); // in bytes
-            int bytesNeeded = bm.getByteCount(); // in bytes
+            int bytesNeeded = bm1.getByteCount(); // in bytes
             if( bytesNeeded * 1.5 < freeSpace ) {
                 // there is space for the bitmap
                 try {
                     FileOutputStream out = new FileOutputStream( fileToWrite );
                     // write to file
-                    boolean result = bm.compress( Bitmap.CompressFormat.PNG , 100,  out );
+                    boolean result = bm1.compress( Bitmap.CompressFormat.PNG , 100,  out );
                     out.close( );
                     setDrawingCacheEnabled(false);
                     if( result ) {
