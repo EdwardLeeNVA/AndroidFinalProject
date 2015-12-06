@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView   android:id="@+id/backgroundId"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/background_choices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <SeekBar    android:id="@+id/redBackgroundSliderId"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#FFFF0000"
+        android:layout_below="@+id/backgroundId"/>
+    <SeekBar    android:id="@+id/greenBackgroundSliderId"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#FF00FF00"
+        android:layout_below="@+id/redBackgroundSliderId"/>
+    <SeekBar    android:id="@+id/blueBackgroundSliderId"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#FF0000FF"
+        android:layout_below="@+id/greenBackgroundSliderId"/>
+    <TextView   android:id="@+id/previewBackgroundId"
+        android:layout_below="@id/blueBackgroundSliderId"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+
+    <TextView   android:id="@+id/colorId"
+        android:layout_below="@+id/previewBackgroundId"
+        android:layout_centerHorizontal="true"
+        android:text="@string/color_choices"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
+    <SeekBar    android:id="@+id/redSliderId"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#FFFF0000"
+        android:layout_below="@+id/colorId"/>
+    <SeekBar    android:id="@+id/greenSliderId"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#FF00FF00"
+        android:layout_below="@+id/redSliderId"/>
+    <SeekBar    android:id="@+id/blueSliderId"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#FF0000FF"
+        android:layout_below="@+id/greenSliderId"/>
+    <TextView   android:id="@+id/previewId"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/blueSliderId"/>
+    <Button     android:id="@+id/exitButton"
+        android:text="@string/exit_button"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/blueSliderId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
