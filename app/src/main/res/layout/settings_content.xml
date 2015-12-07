@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView   android:id="@+id/backgroundId"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="75dp"
         android:layout_centerHorizontal="true"
         android:text="@string/background_choices"
         android:layout_width="wrap_content"
@@ -56,10 +54,25 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/blueSliderId"/>
+    <Button     android:id="@+id/saveButton"
+        android:text="@string/save_button"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/previewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="saveBtmp"/>
+    <Button     android:id="@+id/clearButton"
+        android:text="@string/clear_button"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clearWhiteBoard"/>
     <Button     android:id="@+id/exitButton"
         android:text="@string/exit_button"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/blueSliderId"
+        android:layout_below="@id/clearButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="closeScreen"/>
 </RelativeLayout>

@@ -23,12 +23,13 @@ public class WhiteBoard extends View {
     private Paint drawnPaint;
     private Path path;
     private Bitmap bm;
+    private Color tempColor;
 
 
     public WhiteBoard(Context context, int width, int height) {
         super(context);
-
-
+        //tempcolor created when the whiteboard is created
+        tempColor = new Color();
 
         //set default color to white
         setBackgroundColor(Color.WHITE);
@@ -39,10 +40,6 @@ public class WhiteBoard extends View {
         drawnPaint.setStyle(Paint.Style.STROKE);
         drawnPaint.setStrokeJoin(Paint.Join.ROUND);
         drawnPaint.setStrokeCap(Paint.Cap.ROUND);
-
-
-        //the window we are painting on
-
 
         path = new Path();
 
@@ -137,7 +134,17 @@ public class WhiteBoard extends View {
     /**
      * set the color of the brush
      */
-    public void setBrushColor(int color){
-        drawnPaint.setColor(color);
+    public void setBrushColor(int red, int blue, int green){
+        drawnPaint.setColor(tempColor.argb(0,red,blue,green));
+        invalidate();
+    }
+
+    /**
+     * set the background color
+     */
+    public void setBackGroundColor(int red, int blue, int green){
+
+        setBackgroundColor(tempColor.argb(0,red,blue,green));
+        invalidate();
     }
 }

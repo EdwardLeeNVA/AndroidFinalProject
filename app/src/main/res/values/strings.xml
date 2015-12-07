@@ -11,4 +11,6 @@
     <string name="settings_label">Whiteboard Settings</string>
     <string name="exit_button">Go Back</string>
     <string name="barSaveButton">Save Drawing</string>
+    <string name="clear_button">Clear Whiteboard</string>
+    <string name="save_button">Save Whiteboard</string>
 </resources>

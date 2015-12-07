@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
     //the board being drawn on
-    WhiteBoard wb;
+    static WhiteBoard wb;
 
     public static int STATUS_BAR_HEIGHT = 24;
     public static int ACTION_BAR_HEIGHT = 56;
@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
       //  setContentView(R.layout.activity_main);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.set);
       //  setSupportActionBar(toolbar);
-
-
 
         //get the height of the actionbar
         Resources res = getResources();
@@ -108,10 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         float touchX = event.getX();
         float touchY = event.getY();
 
-
         wb.pathOperations(touchX, touchY, event);
-
-
         return true;
     }
 
